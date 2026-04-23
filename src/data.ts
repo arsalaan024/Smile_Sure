@@ -59,28 +59,28 @@ export const services: Service[] = [
     id: "srv-1",
     title: "General Dentistry",
     description: "Comprehensive check-ups, cleaning, and preventive care for a healthy smile.",
-    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1588776814546-1ffce47267a5?auto=format&fit=crop&q=80&w=600",
     color: "bg-blue-50 text-blue-600"
   },
   {
     id: "srv-2",
     title: "Cosmetic Procedures",
     description: "Teeth whitening, veneers, and smile makeovers tailored to your facial features.",
-    image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1460672985063-6764ac8b9c74?auto=format&fit=crop&q=80&w=600",
     color: "bg-purple-50 text-purple-600"
   },
   {
     id: "srv-3",
     title: "Orthodontics",
     description: "Invisalign and traditional braces to straighten teeth and improve alignment.",
-    image: "https://images.unsplash.com/photo-1516244485186-077d7ffcc360?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1597764690523-15bea4c581c9?auto=format&fit=crop&q=80&w=600",
     color: "bg-emerald-50 text-emerald-600"
   },
   {
     id: "srv-4",
     title: "Dental Implants",
     description: "Modern tooth replacement solutions that look and feel completely natural.",
-    image: "https://images.unsplash.com/photo-1609916518885-af04fbe7935f?auto=format&fit=crop&q=80&w=400",
+    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600",
     color: "bg-orange-50 text-orange-600"
   }
 ];
