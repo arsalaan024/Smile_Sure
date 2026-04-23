@@ -1,6 +1,7 @@
 export interface Doctor {
   id: string;
   name: string;
+  email: string;
   role: string;
   specialty: string;
   image: string;
@@ -21,6 +22,7 @@ export const doctors: Doctor[] = [
   {
     id: "doc-1",
     name: "Dr. Adrian Thorne",
+    email: "khanarsalaan891@gmail.com",
     role: "Chief Implantologist",
     specialty: "12+ Years Excellence",
     image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=600",
@@ -31,6 +33,7 @@ export const doctors: Doctor[] = [
   {
     id: "doc-2",
     name: "Dr. Elena Vance",
+    email: "khanarsalaan891@gmail.com",
     role: "Cosmetic Specialist",
     specialty: "Smile Design Expert",
     image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=600",
@@ -41,6 +44,7 @@ export const doctors: Doctor[] = [
   {
     id: "doc-3",
     name: "Dr. Marcus Chen",
+    email: "khanarsalaan891@gmail.com",
     role: "Orthodontist",
     specialty: "Digital Alignments",
     image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=600",

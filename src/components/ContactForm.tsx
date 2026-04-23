@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { CheckCircle2, AlertCircle, Send } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 interface FormData {
   name: string;
@@ -30,6 +31,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -74,13 +76,34 @@ export default function ContactForm() {
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-    
-    setTimeout(() => setIsSuccess(false), 5000);
+    setSubmitError("");
+
+    try {
+      await emailjs.send(
+        'service_c3vyxlw',
+        'template_8hlokvj',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          title: formData.service,
+          message: formData.message,
+          name: formData.name,
+          email: formData.email,
+        },
+        'WentrFCB7vXzKxnR_'
+      );
+      
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+      setTimeout(() => setIsSuccess(false), 5000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setIsSubmitting(false);
+      setSubmitError("Failed to send message. Please try again.");
+      setTimeout(() => setSubmitError(""), 5000);
+    }
   };
 
   return (

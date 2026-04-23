@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "motion/react";
 import { X, Calendar, Clock, Star, MapPin, CheckCircle2, ChevronLeft, CreditCard, Lock, ShieldCheck, Loader2 } from "lucide-react";
 import { Doctor, Service, doctors, services, timeSlots } from '../data';
+import emailjs from '@emailjs/browser';
 
 // Declare Razorpay on window for TypeScript
 declare global {
@@ -87,6 +88,27 @@ export default function BookingModal({ isOpen, onClose, initialDoctor, initialSe
       image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=200",
       handler: function (response: any) {
         console.log("Payment Successful:", response.razorpay_payment_id);
+        
+        // Send booking confirmation email to doctor
+        emailjs.send(
+          'service_c3vyxlw',
+          'template_iq69vgj',
+          {
+            doctor_email: selectedDoctor?.email,
+            doctor_name: selectedDoctor?.name,
+            patient_name: 'Patient',
+            patient_email: 'patient@example.com',
+            service: selectedService?.title,
+            date: selectedDate,
+            time: selectedTime,
+          },
+          'WentrFCB7vXzKxnR_'
+        ).then(() => {
+          console.log('Booking confirmation email sent!');
+        }).catch((err) => {
+          console.error('Email send failed:', err);
+        });
+
         setIsProcessingPayment(false);
         setStep("success");
       },
