@@ -21,36 +21,36 @@ export interface Service {
 export const doctors: Doctor[] = [
   {
     id: "doc-1",
-    name: "Dr. Adrian Thorne",
+    name: "Dr. Sameer Malhotra",
     email: "khanarsalaan891@gmail.com",
     role: "Chief Implantologist",
-    specialty: "12+ Years Excellence",
-    image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=600",
-    bio: "Dr. Thorne is a pioneer in modern implantology, focusing on minimally invasive techniques and immediate loading protocols.",
-    education: "DDS, Harvard School of Dental Medicine",
-    location: "Downtown Clinic"
+    specialty: "15+ Years Excellence",
+    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=600",
+    bio: "Dr. Sameer is a pioneer in modern implantology in India, focusing on minimally invasive techniques and immediate loading protocols.",
+    education: "BDS, MDS, AIIMS Delhi",
+    location: "Main Branch, Mumbai"
   },
   {
     id: "doc-2",
-    name: "Dr. Elena Vance",
+    name: "Dr. Ananya Sharma",
     email: "khanarsalaan891@gmail.com",
     role: "Cosmetic Specialist",
     specialty: "Smile Design Expert",
     image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=600",
-    bio: "Dr. Vance transforms smiles using advanced digital planning, porcelain veneers, and state-of-the-art whitening procedures.",
-    education: "DMD, University of Pennsylvania",
-    location: "Westside Branch"
+    bio: "Dr. Ananya transforms smiles using advanced digital planning, porcelain veneers, and state-of-the-art whitening procedures.",
+    education: "MDS, Manipal College of Dental Sciences",
+    location: "Bandra Clinic"
   },
   {
     id: "doc-3",
-    name: "Dr. Marcus Chen",
+    name: "Dr. Rahul Kapoor",
     email: "khanarsalaan891@gmail.com",
     role: "Orthodontist",
     specialty: "Digital Alignments",
-    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=600",
-    bio: "Dr. Chen specializes in invisible aligners and complex orthodontic cases, bringing precision and comfort to every patient.",
-    education: "DDS, MS Orthodontics, UCLA",
-    location: "Downtown Clinic"
+    image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=600",
+    bio: "Dr. Rahul specializes in invisible aligners and complex orthodontic cases, bringing precision and comfort to every patient.",
+    education: "BDS, MDS, King George's Medical University",
+    location: "Main Branch, Mumbai"
   }
 ];
 

@@ -3,15 +3,15 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Dr. Sarah Jenkins",
-    role: "Patient since 2021",
-    content: "The environment is so calming, and the staff is incredibly professional. I've never felt more at ease in a dental chair. Truly a premium experience.",
+    name: "Priya Verma",
+    role: "Cosmetic Patient",
+    content: "The environment is so calming, and the staff is incredibly professional. Dr. Ananya transforms smiles with so much precision. I've never felt more at ease in a dental chair.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200"
   },
   {
-    name: "Marcus Thompson",
-    role: "Invisalign Treatment",
-    content: "Transparent pricing and amazing results. Lumina Dental transformed my smile in less than 8 months. Highly recommend their orthodontics team.",
+    name: "Arjun Mehta",
+    role: "Implant Patient",
+    content: "Excellent root canal treatment and implants. Dr. Sameer was very patient and explained everything clearly. Truly a premium dental experience in Mumbai.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
   }
 ];
