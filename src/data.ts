@@ -59,7 +59,7 @@ export const services: Service[] = [
     id: "srv-1",
     title: "General Dentistry",
     description: "Comprehensive check-ups, cleaning, and preventive care for a healthy smile.",
-    image: "https://images.unsplash.com/photo-1588776814546-1ffce47267a5?auto=format&fit=crop&q=80&w=600",
+    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=600",
     color: "bg-blue-50 text-blue-600"
   },
   {
