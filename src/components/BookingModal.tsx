@@ -3,6 +3,13 @@ import { motion, AnimatePresence } from "motion/react";
 import { X, Calendar, Clock, Star, MapPin, CheckCircle2, ChevronLeft, CreditCard, Lock, ShieldCheck, Loader2 } from "lucide-react";
 import { Doctor, Service, doctors, services, timeSlots } from '../data';
 
+// Declare Razorpay on window for TypeScript
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
+
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -63,12 +70,46 @@ export default function BookingModal({ isOpen, onClose, initialDoctor, initialSe
 
   const handlePayment = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!window.Razorpay) {
+      alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
+
     setIsProcessingPayment(true);
-    // Simulate API call to Stripe
-    setTimeout(() => {
-      setIsProcessingPayment(false);
-      setStep("success");
-    }, 1500);
+
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+      amount: 50000, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise = ₹500
+      currency: "INR",
+      name: "Smile Sure Dental Clinic",
+      description: `${selectedService?.title} with ${selectedDoctor?.name}`,
+      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=200",
+      handler: function (response: any) {
+        console.log("Payment Successful:", response.razorpay_payment_id);
+        setIsProcessingPayment(false);
+        setStep("success");
+      },
+      prefill: {
+        name: "Patient Name",
+        email: "patient@example.com",
+        contact: "9999999999"
+      },
+      notes: {
+        address: "Smile Sure Clinic, India"
+      },
+      theme: {
+        color: "#0F172A" // brand-primary
+      },
+      modal: {
+        ondismiss: function() {
+          setIsProcessingPayment(false);
+        }
+      }
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
   };
 
   const handleBack = () => {
@@ -333,7 +374,7 @@ export default function BookingModal({ isOpen, onClose, initialDoctor, initialSe
                   <div className="mb-6 p-4 bg-brand-bg border border-brand-border rounded-[4px]">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-text-muted">Consultation Deposit</span>
-                      <span className="font-extrabold text-brand-primary">$50.00</span>
+                      <span className="font-extrabold text-brand-primary">₹500.00</span>
                     </div>
                     <div className="text-sm font-medium text-brand-text-muted">
                       {selectedService?.title} with {selectedDoctor?.name} on {selectedDate} at {selectedTime}
@@ -341,69 +382,35 @@ export default function BookingModal({ isOpen, onClose, initialDoctor, initialSe
                   </div>
 
                   <h4 className="text-xl font-extrabold text-brand-primary uppercase mb-6 flex items-center gap-2">
-                    <CreditCard className="w-5 h-5 text-brand-secondary" /> Payment Details
+                    <CreditCard className="w-5 h-5 text-brand-secondary" /> Confirm Payment
                   </h4>
                   
-                  <form onSubmit={handlePayment} className="flex flex-col flex-1">
-                    <div className="space-y-4 mb-8">
-                      <div>
-                        <label className="block text-xs font-bold text-brand-text-muted uppercase tracking-wider mb-2">Card Information</label>
-                        <div className="border border-brand-border rounded-[2px] overflow-hidden">
-                          <input 
-                            type="text" 
-                            placeholder="Card number"
-                            className="w-full px-4 py-3 border-b border-brand-border focus:outline-none focus:bg-brand-bg font-medium"
-                            required
-                          />
-                          <div className="flex">
-                            <input 
-                              type="text" 
-                              placeholder="MM / YY"
-                              className="w-1/2 px-4 py-3 border-r border-brand-border focus:outline-none focus:bg-brand-bg font-medium"
-                              required
-                            />
-                            <input 
-                              type="text" 
-                              placeholder="CVC"
-                              className="w-1/2 px-4 py-3 focus:outline-none focus:bg-brand-bg font-medium"
-                              required
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-xs font-bold text-brand-text-muted uppercase tracking-wider mb-2">Name on card</label>
-                        <input 
-                          type="text" 
-                          placeholder="John Doe"
-                          className="w-full border border-brand-border rounded-[2px] px-4 py-3 focus:outline-none focus:bg-brand-bg font-medium"
-                          required
-                        />
-                      </div>
-                    </div>
+                  <div className="flex-1 flex flex-col items-center justify-center text-center p-6 border-2 border-dashed border-brand-border rounded-[4px] bg-brand-bg/50">
+                    <ShieldCheck className="w-12 h-12 text-brand-secondary mb-4" />
+                    <h5 className="font-extrabold text-brand-primary uppercase mb-2">Secure Gateway</h5>
+                    <p className="text-xs text-brand-text-muted mb-8 max-w-xs">You will be redirected to our secure Razorpay gateway to complete your deposit via UPI, Card, or Net Banking.</p>
+                  </div>
 
-                    <div className="mt-auto">
-                      <div className="flex items-center justify-center gap-2 mb-4 text-xs font-bold text-brand-text-muted uppercase tracking-widest">
-                        <ShieldCheck className="w-4 h-4 text-green-500" /> Secured by Stripe
-                      </div>
-                      <button
-                        type="submit"
-                        disabled={isProcessingPayment}
-                        className={`w-full py-4 rounded-[2px] font-extrabold uppercase tracking-widest transition-all flex items-center justify-center ${
-                          isProcessingPayment
-                            ? "bg-brand-secondary/70 text-white cursor-not-allowed"
-                            : "bg-brand-secondary text-white hover:bg-brand-primary shadow-lg hover:shadow-xl"
-                        }`}
-                      >
-                        {isProcessingPayment ? (
-                          <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Processing...</>
-                        ) : (
-                          <><Lock className="w-4 h-4 mr-2" /> Pay $50.00 & Confirm</>
-                        )}
-                      </button>
+                  <div className="mt-auto pt-8">
+                    <div className="flex items-center justify-center gap-2 mb-4 text-[10px] font-black text-brand-text-muted uppercase tracking-[0.2em]">
+                      <Lock className="w-3 h-3 text-green-500" /> Secured by Razorpay
                     </div>
-                  </form>
+                    <button
+                      onClick={handlePayment}
+                      disabled={isProcessingPayment}
+                      className={`w-full py-4 rounded-[2px] font-extrabold uppercase tracking-widest transition-all flex items-center justify-center ${
+                        isProcessingPayment
+                          ? "bg-brand-secondary/70 text-white cursor-not-allowed"
+                          : "bg-brand-secondary text-white hover:bg-brand-primary shadow-lg hover:shadow-xl"
+                      }`}
+                    >
+                      {isProcessingPayment ? (
+                        <><Loader2 className="w-5 h-5 mr-2 animate-spin" /> Waiting for payment...</>
+                      ) : (
+                        <><CreditCard className="w-4 h-4 mr-2" /> Pay ₹500 & Confirm</>
+                      )}
+                    </button>
+                  </div>
                 </div>
               )}
 
