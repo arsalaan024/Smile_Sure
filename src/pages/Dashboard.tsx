@@ -63,8 +63,6 @@ export default function Dashboard() {
     }
   }, [isLoaded, isSignedIn, navigate]);
 
-  if (!isLoaded || !isSignedIn || !user) return null;
-
   const handleLogout = async () => {
     await signOut();
     navigate('/');
