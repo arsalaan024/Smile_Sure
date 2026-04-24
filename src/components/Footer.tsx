@@ -1,4 +1,5 @@
 import { Mail, MapPin, Instagram, Twitter, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -50,7 +51,7 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-widest mb-8 text-brand-secondary">Quick Links</h4>
             <ul className="space-y-4 text-brand-text-muted text-[13px] font-medium">
               <li><a href="#doctors" className="hover:text-white transition-colors">Our Doctors</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Patient Portal</a></li>
+              <li><Link to="/auth" className="hover:text-white transition-colors">Patient Portal</Link></li>
               <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
               <li><a href="#contact" className="hover:text-white transition-colors">Emergency Guide</a></li>
             </ul>
@@ -71,11 +72,11 @@ export default function Footer() {
             <ul className="space-y-4 text-brand-text-muted text-[13px] font-medium">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 shrink-0 text-brand-secondary" />
-                <span>Bandra West, <br />Mumbai, Maharashtra 400050</span>
+                <span>Koregaon Park, <br />Pune, Maharashtra 411001</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 shrink-0 text-brand-secondary" />
-                <span>hello@smilesure.com</span>
+                <span>smilesure.in@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -84,8 +85,8 @@ export default function Footer() {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-brand-accent/30 font-medium">
           <p>© 2026 Smile Sure Clinic. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors uppercase tracking-widest">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors uppercase tracking-widest">Terms of Service</a>
+            <Link to="/privacy" className="hover:text-white transition-colors uppercase tracking-widest">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-white transition-colors uppercase tracking-widest">Terms of Service</Link>
           </div>
         </div>
       </div>

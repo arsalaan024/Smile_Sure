@@ -22,35 +22,35 @@ export const doctors: Doctor[] = [
   {
     id: "doc-1",
     name: "Dr. Sameer Malhotra",
-    email: "khanarsalaan891@gmail.com",
+    email: "smilesure.in@gmail.com",
     role: "Chief Implantologist",
     specialty: "15+ Years Excellence",
     image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=600",
     bio: "Dr. Sameer is a pioneer in modern implantology in India, focusing on minimally invasive techniques and immediate loading protocols.",
     education: "BDS, MDS, AIIMS Delhi",
-    location: "Main Branch, Mumbai"
+    location: "Koregaon Park, Pune"
   },
   {
     id: "doc-2",
     name: "Dr. Ananya Sharma",
-    email: "khanarsalaan891@gmail.com",
+    email: "smilesure.in@gmail.com",
     role: "Cosmetic Specialist",
     specialty: "Smile Design Expert",
     image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=600",
     bio: "Dr. Ananya transforms smiles using advanced digital planning, porcelain veneers, and state-of-the-art whitening procedures.",
     education: "MDS, Manipal College of Dental Sciences",
-    location: "Bandra Clinic"
+    location: "Kothrud Clinic, Pune"
   },
   {
     id: "doc-3",
     name: "Dr. Rahul Kapoor",
-    email: "khanarsalaan891@gmail.com",
+    email: "smilesure.in@gmail.com",
     role: "Orthodontist",
     specialty: "Digital Alignments",
     image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=600",
     bio: "Dr. Rahul specializes in invisible aligners and complex orthodontic cases, bringing precision and comfort to every patient.",
     education: "BDS, MDS, King George's Medical University",
-    location: "Main Branch, Mumbai"
+    location: "Viman Nagar, Pune"
   }
 ];
 
