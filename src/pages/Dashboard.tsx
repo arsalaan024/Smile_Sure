@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useUser, useClerk } from '@clerk/clerk-react';
-import { LogOut, Calendar, FileText, ChevronRight, X, CheckCircle2, Clock3, AlertCircle } from 'lucide-react';
+import { LogOut, Calendar, FileText, ChevronRight, X, CheckCircle2, Clock3, AlertCircle, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 // Mock treatment plans the user has "purchased"
@@ -71,11 +71,28 @@ export default function Dashboard() {
   };
 
   const [localBookings, setLocalBookings] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('smile_sure_bookings') || '[]');
-    setLocalBookings(saved);
+    try {
+      const saved = JSON.parse(localStorage.getItem('smile_sure_bookings') || '[]');
+      setLocalBookings(saved);
+    } catch (e) {
+      console.error("Failed to parse bookings:", e);
+      localStorage.removeItem('smile_sure_bookings');
+    }
+    setIsLoading(false);
   }, []);
+
+  if (!isLoaded || isLoading) {
+    return (
+      <div className="min-h-screen bg-brand-bg flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-brand-secondary animate-spin" />
+      </div>
+    );
+  }
+
+  if (!isSignedIn) return null;
 
   return (
     <div className="min-h-screen bg-brand-bg font-sans">
