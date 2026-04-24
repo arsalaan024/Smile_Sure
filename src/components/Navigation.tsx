@@ -13,12 +13,12 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 lg:px-16">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center space-x-2">
-            <div className="w-8 h-8 bg-brand-secondary rounded-[4px]" />
+          <Link to="/" className="flex-shrink-0 flex items-center space-x-3">
+            <img src="/logo.png" alt="Smile Sure Logo" className="w-10 h-10 object-contain" />
             <span className="text-xl font-extrabold tracking-tighter text-brand-primary uppercase">
               Smile Sure
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
