@@ -70,6 +70,13 @@ export default function Dashboard() {
     navigate('/');
   };
 
+  const [localBookings, setLocalBookings] = useState<any[]>([]);
+
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem('smile_sure_bookings') || '[]');
+    setLocalBookings(saved);
+  }, []);
+
   return (
     <div className="min-h-screen bg-brand-bg font-sans">
       {/* Top Navigation */}
@@ -112,23 +119,59 @@ export default function Dashboard() {
               </Link>
             </div>
 
-            <div className="bg-brand-bg border border-brand-border rounded-[4px] p-6 flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-brand-secondary transition-colors cursor-pointer">
-              <div className="flex items-center gap-6">
-                <div className="bg-white px-4 py-3 rounded-[2px] shadow-sm text-center border border-brand-border">
-                  <span className="block text-brand-secondary text-xs font-black uppercase tracking-widest mb-1">Oct</span>
-                  <span className="block text-2xl font-black text-brand-primary">24</span>
+            <div className="space-y-6">
+              {/* Render local storage bookings */}
+              {localBookings.map((booking) => {
+                const dateObj = new Date(booking.date);
+                const month = dateObj.toLocaleString('en-US', { month: 'short' });
+                const day = dateObj.getDate();
+
+                return (
+                  <div key={booking.id} className="bg-brand-bg border border-brand-border rounded-[4px] p-6 flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-brand-secondary transition-colors cursor-pointer">
+                    <div className="flex items-center gap-6">
+                      <div className="bg-white px-4 py-3 rounded-[2px] shadow-sm text-center border border-brand-border">
+                        <span className="block text-brand-secondary text-xs font-black uppercase tracking-widest mb-1">{month}</span>
+                        <span className="block text-2xl font-black text-brand-primary">{day}</span>
+                      </div>
+                      <div>
+                        <h3 className="font-extrabold text-brand-primary uppercase text-lg mb-1">{booking.service}</h3>
+                        <p className="text-sm font-medium text-brand-text-muted">with {booking.doctor}</p>
+                        <p className="text-xs font-bold text-brand-secondary mt-2 flex items-center">
+                          <Clock3 className="w-3 h-3 mr-1" /> {booking.time}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-green-600 bg-green-50 px-2 py-1 rounded-[2px] border border-green-200">Paid</span>
+                      <button className="w-full sm:w-auto px-6 py-3 border border-brand-border text-brand-text-muted font-bold text-xs uppercase tracking-widest rounded-[2px] hover:bg-white transition-colors cursor-pointer">
+                        Reschedule
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* Default Mock Appointment */}
+              {localBookings.length === 0 && (
+                <div className="bg-brand-bg border border-brand-border rounded-[4px] p-6 flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-brand-secondary transition-colors cursor-pointer">
+                  <div className="flex items-center gap-6">
+                    <div className="bg-white px-4 py-3 rounded-[2px] shadow-sm text-center border border-brand-border">
+                      <span className="block text-brand-secondary text-xs font-black uppercase tracking-widest mb-1">Oct</span>
+                      <span className="block text-2xl font-black text-brand-primary">24</span>
+                    </div>
+                    <div>
+                      <h3 className="font-extrabold text-brand-primary uppercase text-lg mb-1">General Checkup</h3>
+                      <p className="text-sm font-medium text-brand-text-muted">with Dr. Adrian Thorne</p>
+                      <p className="text-xs font-bold text-brand-secondary mt-2 flex items-center">
+                        <Clock3 className="w-3 h-3 mr-1" /> 10:30 AM - 11:15 AM
+                      </p>
+                    </div>
+                  </div>
+                  <button className="w-full sm:w-auto px-6 py-3 border border-brand-border text-brand-text-muted font-bold text-xs uppercase tracking-widest rounded-[2px] hover:bg-white transition-colors cursor-pointer">
+                    Reschedule
+                  </button>
                 </div>
-                <div>
-                  <h3 className="font-extrabold text-brand-primary uppercase text-lg mb-1">General Checkup</h3>
-                  <p className="text-sm font-medium text-brand-text-muted">with Dr. Adrian Thorne</p>
-                  <p className="text-xs font-bold text-brand-secondary mt-2 flex items-center">
-                    <Clock3 className="w-3 h-3 mr-1" /> 10:30 AM - 11:15 AM
-                  </p>
-                </div>
-              </div>
-              <button className="w-full sm:w-auto px-6 py-3 border border-brand-border text-brand-text-muted font-bold text-xs uppercase tracking-widest rounded-[2px] hover:bg-white transition-colors cursor-pointer">
-                Reschedule
-              </button>
+              )}
             </div>
           </div>
 

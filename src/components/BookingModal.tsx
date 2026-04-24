@@ -109,6 +109,18 @@ export default function BookingModal({ isOpen, onClose, initialDoctor, initialSe
           console.error('Email send failed:', err);
         });
 
+        // Save booking to localStorage for Dashboard
+        const newBooking = {
+          id: response.razorpay_payment_id,
+          service: selectedService?.title,
+          doctor: selectedDoctor?.name,
+          date: selectedDate,
+          time: selectedTime,
+          status: 'upcoming'
+        };
+        const existingBookings = JSON.parse(localStorage.getItem('smile_sure_bookings') || '[]');
+        localStorage.setItem('smile_sure_bookings', JSON.stringify([...existingBookings, newBooking]));
+
         setIsProcessingPayment(false);
         setStep("success");
       },
