@@ -77,6 +77,11 @@ export default function BookingModal({ isOpen, onClose, initialDoctor, initialSe
       return;
     }
 
+    if (!selectedDate || !selectedTime) {
+      alert("Please select a date and time for your appointment.");
+      return;
+    }
+
     setIsProcessingPayment(true);
 
     const options = {

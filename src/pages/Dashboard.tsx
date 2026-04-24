@@ -123,8 +123,9 @@ export default function Dashboard() {
               {/* Render local storage bookings */}
               {localBookings.map((booking) => {
                 const dateObj = new Date(booking.date);
-                const month = dateObj.toLocaleString('en-US', { month: 'short' });
-                const day = dateObj.getDate();
+                const isValidDate = !isNaN(dateObj.getTime());
+                const month = isValidDate ? dateObj.toLocaleString('en-US', { month: 'short' }) : '—';
+                const day = isValidDate ? dateObj.getDate() : '—';
 
                 return (
                   <div key={booking.id} className="bg-brand-bg border border-brand-border rounded-[4px] p-6 flex flex-col sm:flex-row items-center justify-between gap-6 hover:border-brand-secondary transition-colors cursor-pointer">
