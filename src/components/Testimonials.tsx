@@ -11,7 +11,7 @@ const testimonials = [
   {
     name: "Arjun Mehta",
     role: "Implant Patient",
-    content: "Excellent root canal treatment and implants. Dr. Sameer was very patient and explained everything clearly. Truly a premium dental experience in Mumbai.",
+    content: "Excellent root canal treatment and implants. Dr. Sameer was very patient and explained everything clearly. Truly a premium dental experience in Pune.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
   }
 ];
