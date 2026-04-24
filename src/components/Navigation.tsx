@@ -14,7 +14,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 flex items-center space-x-3">
-            <img src="/logo.png" alt="Smile Sure Logo" className="w-10 h-10 object-contain" />
+            <img src="/logo.jpeg" alt="Smile Sure Logo" className="w-10 h-10 object-contain" />
             <span className="text-xl font-extrabold tracking-tighter text-brand-primary uppercase">
               Smile Sure
             </span>

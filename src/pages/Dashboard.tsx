@@ -97,7 +97,7 @@ export default function Dashboard() {
       {/* Top Navigation */}
       <nav className="bg-white border-b border-brand-border px-6 lg:px-16 py-4 flex justify-between items-center sticky top-0 z-50">
         <Link to="/" className="flex items-center space-x-3">
-          <img src="/logo.png" alt="Smile Sure Logo" className="w-8 h-8 object-contain" />
+          <img src="/logo.jpeg" alt="Smile Sure Logo" className="w-8 h-8 object-contain" />
           <span className="text-xl font-extrabold tracking-tighter text-brand-primary uppercase">
             Smile Sure
           </span>

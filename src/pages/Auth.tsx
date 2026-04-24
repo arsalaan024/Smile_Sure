@@ -21,7 +21,7 @@ export default function Auth() {
         
         <div className="relative z-10">
           <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <img src="/logo.png" alt="Smile Sure Logo" className="w-12 h-12 object-contain brightness-0 invert" />
+            <img src="/logo.jpeg" alt="Smile Sure Logo" className="w-12 h-12 object-contain brightness-0 invert" />
             <span className="text-white font-black text-2xl tracking-tighter uppercase">
               Smile Sure
             </span>

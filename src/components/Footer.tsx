@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <img src="/logo.png" alt="Smile Sure Logo" className="w-8 h-8 object-contain brightness-0 invert" />
+              <img src="/logo.jpeg" alt="Smile Sure Logo" className="w-8 h-8 object-contain brightness-0 invert" />
               <span className="text-xl font-extrabold tracking-tighter uppercase whitespace-nowrap">Smile Sure</span>
             </div>
             <p className="text-brand-text-muted text-[13px] leading-relaxed font-medium">
