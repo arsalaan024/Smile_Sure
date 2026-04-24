@@ -26,8 +26,8 @@ export default function Footer() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 bg-brand-secondary rounded-[2px]" />
+            <div className="flex items-center space-x-3">
+              <img src="/logo.png" alt="Smile Sure Logo" className="w-8 h-8 object-contain brightness-0 invert" />
               <span className="text-xl font-extrabold tracking-tighter uppercase whitespace-nowrap">Smile Sure</span>
             </div>
             <p className="text-brand-text-muted text-[13px] leading-relaxed font-medium">
@@ -71,18 +71,18 @@ export default function Footer() {
             <ul className="space-y-4 text-brand-text-muted text-[13px] font-medium">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 shrink-0 text-brand-secondary" />
-                <span>124 Marylebone High St, <br />London W1U 4PQ</span>
+                <span>Bandra West, <br />Mumbai, Maharashtra 400050</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 shrink-0 text-brand-secondary" />
-                <span>hello@luminadental.com</span>
+                <span>hello@smilesure.com</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-brand-accent/30 font-medium">
-          <p>© 2026 Lumina Dental Studio. All rights reserved.</p>
+          <p>© 2026 Smile Sure Clinic. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-white transition-colors uppercase tracking-widest">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors uppercase tracking-widest">Terms of Service</a>
